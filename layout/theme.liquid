@@ -120,7 +120,7 @@
   <div class="shifter-page">
     <div id="wrapper">
 
-    <!--   <div id="header" class="row">	
+<!--       <div id="header" class="row">	
         <div id="search" class="desktop-3 tablet-2 mobile-hide">
           <form action="/search" method="get">
             <i class="fa fa-search"></i>
@@ -128,31 +128,35 @@
           </form>
         </div>
 
-       
+        <div id="logo" class="desktop-6 tablet-2 mobile-3">
+          {% if settings.use_logo_image %}
+          <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
+          {% else %}
+          <a href="/">{{ shop.name }}</a>
+          {% endif %}
+        </div> 
 
-        
+     
 
-      </div>  <!-- End Header --> -->
+      </div>  --> <!-- End Header -->
 
       <div class="clear"></div>    
 
       <div class="row">
-        <nav class="navigation desktop-12">
+        <nav class="navigation desktop-12" id="navBar">
+          <div id="logo" class="desktop-6 tablet-2 mobile-3">
+            {% if settings.use_logo_image %}
+            <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
+            {% else %}
+            <a href="/">{{ shop.name }}</a>
+            {% endif %}
+          </div> 
           <ul class="nav">
             {% for link in linklists.main-menu.links %}
             {% capture link_handle %}{{ link.title | handle }}{% endcapture %}
             {% capture linkurl %}{{ link.url }}{% endcapture %} 
             {% capture child_list_handle %}{{ link.title | handleize }}{% endcapture %}          
             {% if linklists[child_list_handle] and linklists[child_list_handle].links.size > 0 %}
-            <li>
-               <div id="logo" class="desktop-6 tablet-2 mobile-3">
-                {% if settings.use_logo_image %}
-                <a href="/"><img src="{{ 'logo.png' | asset_url }}" alt="{{ shop.name }}" style="border: 0;"/></a>
-                {% else %}
-                <a href="/">{{ shop.name }}</a>
-                {% endif %}
-              </div> 
-            </li>
             <li class="dropdown">{{ link.title | link_to: link.url }}  
               <ul class="submenu">
                 {% for l in linklists[child_list_handle].links %}
@@ -176,28 +180,29 @@
             <li>{{ link.title | link_to: link.url }}</li>
             {% endif %}     
             {% endfor %}
-          </ul>
-          <ul id="cart" class="desktop-3 tablet-2 mobile-hide">
-          {% if shop.customer_accounts_enabled %}
+           
+            <li id="left-nav-bar">
+            {% if shop.customer_accounts_enabled %}
 
-          {% if customer  %}
-          <li>
-            <a href="/account/login">{{ 'customer.account.title' | t }}</a>
-          </li>
-          <li>
-            <a href="/account/logout">{{ 'customer.account.logout' | t }}</a>
-          </li>
-          {% else %}
-          <li>
-            <a href="/account/login">{{ 'customer.account.title' | t }}</a>
-          </li>
-          {% endif %}
-          
-          {% endif %}
-          <li>
-            <a href="/cart"><i class="fa fa-shopping-cart"></i> : (<span class="cart-count">{{ cart.item_count }}</span>)</a>
-          </li>
-        </ul>   
+            {% if customer  %}
+            <li>
+              <a href="/account/login">{{ 'customer.account.title' | t }}</a>
+            </li>
+            <li>
+              <a href="/account/logout">{{ 'customer.account.logout' | t }}</a>
+            </li>
+            {% else %}
+            <li>
+              <a href="/account/login">{{ 'customer.account.title' | t }}</a>
+            </li>
+            {% endif %}
+            
+            {% endif %}
+            <li>
+              <a href="/cart"><i class="fa fa-shopping-cart"></i> (<span class="cart-count">{{ cart.item_count }}</span>)</a>
+            </li>
+            </li>
+          </ul>
         </nav> <!-- End Navigation -->
       </div>
 

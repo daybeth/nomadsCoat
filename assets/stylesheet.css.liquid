@@ -453,7 +453,7 @@ textarea {
 
 #header { margin-bottom: 10px; position: relative; }
 
-#logo { line-height: initial; position: relative; text-align: center; padding: 0; }
+#logo { line-height: initial; position: relative; text-align: center; padding: 0; width: 15%}
 #logo a { font-family: {{ settings.logo-font }}; font-size: {{ settings.logo-size }}; text-transform: {{ settings.logo-transform }}; font-weight: {{ settings.logo-weight }}; color: {{ settings.logo-color }}; text-decoration: none; }
 
 #search {
@@ -499,10 +499,10 @@ textarea {
   top: 10px;
   right: 10px;
 }
-
+/*
 ul#cart { text-align: right; }
-ul#cart li { display: inline-block; margin-left: 10px;  padding: 0; line-height: 38px;  }
-#cart li a { color: {{ settings.text_color }}; }
+ul#cart li { display: inline; margin-left: 10px;  padding: 0; line-height: 38px;  }
+#cart li a { color: {{ settings.text_color }}; }*/
 
 
 /* #Navigation
@@ -519,6 +519,7 @@ ul.nav {
   text-align: center;
   line-height: 40px;
   position: relative;
+  margin-left: 30%;
   margin-bottom: 0;
 }
 
@@ -538,7 +539,7 @@ ul.nav li:hover a {
 
 ul.nav li a {
   font-family: {{ settings.navigation-font }};
-  font-size: {{ settings.nav_size }};
+  font-size: 0.8em;
   font-weight: {{ settings.nav_weight }};
   text-transform: {{ settings.navigation-transform }};  
   color: {{ settings.nav_color }};
@@ -646,6 +647,7 @@ ul.nav li ul.submenu li.nest:after {
   font-size: 11px;
   color: {{ settings.dropdown-link-color }};
 }
+#left-nav-bar{margin-left: 20%}
 
 
 
